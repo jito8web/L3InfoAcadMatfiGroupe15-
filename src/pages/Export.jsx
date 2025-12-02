@@ -20,15 +20,39 @@ export default function Export() {
 
   const exportCSV = () => {
     const sched = getSched()
-    const csv = Papa.unparse(sched)
+    const sch = []
+
+    sched.forEach((r) => {
+      sch.push({
+        "Periode": r.period,
+        "Amortissement": r.principal,
+        "Intérêts": r.interest,
+        "Annuité": r.payment,
+        "Restant": r.remaining
+      })
+    })
+
+    const csv = Papa.unparse(sch)
     const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' })
     saveAs(blob, 'amortissement.csv')
   }
 
   const exportXLSX = () => {
     const sched = getSched()
+    const sch = []
+
+    sched.forEach((r) => {
+      sch.push({
+        "Periode": r.period,
+        "Amortissement": r.principal,
+        "Intérêts": r.interest,
+        "Annuité": r.payment,
+        "Restant": r.remaining
+      })
+    })
+
     const wb = XLSX.utils.book_new()
-    const ws = XLSX.utils.json_to_sheet(sched)
+    const ws = XLSX.utils.json_to_sheet(sch)
     XLSX.utils.book_append_sheet(wb, ws, 'Amortissement')
     const wbout = XLSX.write(wb, { bookType: 'xlsx', type: 'array' })
     saveAs(
@@ -53,7 +77,7 @@ export default function Export() {
     ])
 
     autoTable(doc, {
-      head: [["Période", "Principal", "Intérêts", "Paiement", "Restant"]],
+      head: [["Période", "Amortissement", "Intérêts", "Annuité", "Restant"]],
       body: rows,
       startY: 20,
     })
@@ -63,7 +87,7 @@ export default function Export() {
 
 
   return (
-    <div>
+    <div className='flex flex-col justify-center items-center'>
       <h1 className="text-2xl font-bold mb-4">Export</h1>
 
       <div className="grid grid-cols-4 gap-4 max-w-2xl">
@@ -135,13 +159,13 @@ export default function Export() {
       {/* Boutons */}
       <div className="mt-5 flex gap-3">
         <button className="bg-green-600 text-white px-4 py-2 rounded" onClick={exportCSV}>
-          Export CSV
+          Exporter En  CSV
         </button>
         <button className="bg-amber-600 text-white px-4 py-2 rounded" onClick={exportXLSX}>
-          Export Excel
+          Exporter En Excel
         </button>
         <button className="bg-red-600 text-white px-4 py-2 rounded" onClick={exportPDF}>
-          Export PDF
+          Exporter En PDF
         </button>
       </div>
     </div>

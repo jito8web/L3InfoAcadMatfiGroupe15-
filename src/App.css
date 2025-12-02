@@ -1,4 +1,4 @@
-/* .container {
+.container {
   max-width: 900px;
   margin: auto;
   padding: 20px;
@@ -30,4 +30,14 @@ th, td {
 }
 th {
   background: #f0f0f0;
-} */
+}
+
+
+.bg-page {
+  background-image: url('/src/assets/bg.jpg');
+  background-size: cover;     /* L’image couvre tout */
+  background-position: center; /* Centrer l’image */
+  background-repeat: no-repeat;
+  min-height: 100vh;           /* Toute la hauteur */
+}
+

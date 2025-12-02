@@ -1,5 +1,6 @@
 export const round2 = (x) => Math.round((x + Number.EPSILON) * 100) / 100
 
+// Annuité Constante
 export function scheduleAnnuity(capital, annualRatePct, years, periodsPerYear){
   const C = Number(capital)
   const r = annualRatePct/100/periodsPerYear
@@ -18,6 +19,7 @@ export function scheduleAnnuity(capital, annualRatePct, years, periodsPerYear){
   return rows
 }
 
+// Amortissement constante
 export function scheduleConstant(capital, annualRatePct, years, periodsPerYear){
   const C = Number(capital)
   const r = annualRatePct/100/periodsPerYear
@@ -42,6 +44,7 @@ export function totalsFromSchedule(schedule){
   return { totalInterest, totalPayment }
 }
 
+// Comparaison
 export function compareTotals(capital, rate, years, ppy){
   const s1 = scheduleConstant(capital, rate, years, ppy)
   const s2 = scheduleAnnuity(capital, rate, years, ppy)

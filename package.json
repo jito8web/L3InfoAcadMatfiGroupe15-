@@ -2,7 +2,7 @@
   "name": "mathfi",
   "private": true,
   "version": "0.0.0",
-  "homepage": "https://jito8web.github.io/Mathfi",
+  "homepage": "https://jito8web.github.io/L3InfoAcadMatfiGroupe15",
   "type": "module",
   "scripts": {
     "dev": "vite",

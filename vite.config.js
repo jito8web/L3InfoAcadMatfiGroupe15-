@@ -7,5 +7,6 @@ export default defineConfig({
 		react(),
 		tailwindcss()
 	],
-	base: '/Mathfi/', // <-- obligatoire pour GitHub Pages
+	base: '/L3InfoAcadMatfiGroupe15/', // <-- obligatoire pour GitHub Pages
 })
+
